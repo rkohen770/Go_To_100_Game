@@ -1,11 +1,10 @@
 //get to 100 game
 import React from "react";
 import ReactDOM from "react-dom";
-//import signIn from "./signinform";
+import board from "./board";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<signIn />);//switch
+root.render(<board />);
   
-
-//figure out how to position everything, in one div? in a circle?
-//idk
+//there are probably a few pages in this game....
+//const myForm=<div><div/>
