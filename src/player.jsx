@@ -57,3 +57,8 @@ class player extends Component {
  //make functions...
  //scores
 export default player;
+
+
+//on a board there are players
+//send enabled status in props, rerender every time?
+//
