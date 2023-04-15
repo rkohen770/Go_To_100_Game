@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 import board from "./board";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<board />);
+root.render(<signIn />);
   
 //there are probably a few pages in this game....
 //const myForm=<div><div/>
