@@ -7,6 +7,7 @@ class board extends Component {
      /*  1. send all info needed in player
          2. switch "div" with some better way to set up the board and style-- see previous projects
          3. you need to RENDER player, not set it in a div, figure out how that works
+         4. figure out how to know when to switch turns. can be something in player or here?
      */
     
         return (

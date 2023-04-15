@@ -7,11 +7,8 @@ class player extends Component {
         moves: 0,
         scores: "you haven't won any games yet"
     };
-    constructor(){
-        super();
-        this.renderButtons=this.renderButtons.bind(this);
-    }
-    renderButtons(){
+    
+    renderButtons=()=>{
         if(this.state.number==100){
             return <div>
             <button onClick={this.add1}>+1</button>
@@ -27,8 +24,6 @@ class player extends Component {
             </div>
         }
     }
-    //how to make sure this is dynamic and constantly updates the rendering with the function based on 
-    //what buttons they press?
     render() { 
         return (
         <div>
@@ -41,27 +36,27 @@ class player extends Component {
         );
     }
     //figure out what to do here:
-    leave(){
+    leave=()=>{
         
     }
-    newGame(){
+    newGame=()=>{
 
     }
-    add1()
+    add1=()=>
     {
-        this.state.number++;
+        this.setState({number: this.state.number++});
     }
-    sub1()
+    sub1=()=>
     {
-        this.state.number--;
+        this.setState({number: this.state.number--});
     }
-    times2()
+    times2=()=>
     {
-        this.state.number=this.state.number*2;
+        this.setState({number: this.state.number*2});
     }
-    divide2()
+    divide2=()=>
     {
-        this.state.number=this.state.number/2;
+        this.setState({number: this.state.number/2});
     }
 }
  //inside the div put all the player's info
