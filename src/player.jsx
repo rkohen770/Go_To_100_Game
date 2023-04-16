@@ -2,25 +2,20 @@
 import React, { Component } from 'react';
 class player extends Component {
 
-    state={
-        number: this.props.number,
-        moves: 0,
-        scores: "you haven't won any games yet"
-    };
-    
+  
     renderButtons=()=>{
-        if(this.state.number==100){
+        if(this.props.number==100){
             return <div>
-            <button onClick={this.add1}>+1</button>
-            <button onClick={this.sub1}>-1</button>
-            <button onClick={this.times2}>x2</button>
-            <button onClick={this.divide2}>/2</button>
+            <button onClick={()=>this.props.onAdd(this.props.id)}>+1</button>
+            <button onClick={()=>this.props.onSub(this.props.id)}>-1</button>
+            <button onClick={()=>this.props.onTimes(this.props.id)}>x2</button>
+            <button onClick={()=>this.props.onDiv(this.props.id)}>/2</button>
             </div>
         }
         else{
             return <div>
-            <button onClick="leave()">leave</button>
-            <button onClick="newGame()">new game</button>
+            <button onClick={()=>this.props.onLeave(this.props.id)}>leave</button>
+            <button onClick={()=>this.props.onNewGame(this.props.id)}>new game</button>
             </div>
         }
     }
@@ -28,36 +23,29 @@ class player extends Component {
         return (
         <div>
             <h1>{this.props.name}</h1>
-            <p>{this.state.number}</p>
-            <p>moves: {this.state.moves}</p>
-            {this.renderButtons()}
+            <p>{this.props.number}</p>
+            <p>moves: {this.props.moves}</p>
+            {this.renderButtons}
             <p>scores</p>
         </div>
         );
     }
-    //figure out what to do here:
-    leave=()=>{
-        
-    }
+   
+   /*
     newGame=()=>{
+        let score=this.state.moves;
+        this.setState({number: 0});
+        this.setState({moves: 0});
+        if(this.state.scores=="you haven't won any games yet"){
+            this.setState({scores: (this.state.moves).toString()});
+        }
+        else{
+            this.setState({scores: this.state.scores+", "+score.toString()});
+        }
 
-    }
-    add1=()=>
-    {
-        this.setState({number: this.state.number++});
-    }
-    sub1=()=>
-    {
-        this.setState({number: this.state.number--});
-    }
-    times2=()=>
-    {
-        this.setState({number: this.state.number*2});
-    }
-    divide2=()=>
-    {
-        this.setState({number: this.state.number/2});
-    }
+    }*/
+   
+   
 }
  //inside the div put all the player's info
  //h1 header is player's name

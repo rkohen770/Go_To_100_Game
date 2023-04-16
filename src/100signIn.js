@@ -1,7 +1,7 @@
 //get to 100 game
 import React from "react";
 import ReactDOM from "react-dom";
-import board from "./board";
+import signIn from "./signinform";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<signIn />);
