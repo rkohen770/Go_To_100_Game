@@ -131,4 +131,3 @@ export default board;
 //TO DO: 
 //       figure out how when and where to switch turns
 //       make a "person" class?
-//       on main page condition-render sign in or board

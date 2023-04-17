@@ -29,9 +29,9 @@ class game extends Component {
     }
     render() { 
         return (
-        <div>
+        <React.Fragment>
             {this.renderContent}
-        </div>
+        </React.Fragment>
         );
     }
 }
