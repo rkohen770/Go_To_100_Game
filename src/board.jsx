@@ -1,12 +1,14 @@
 //import { Component } from "react"
 import React, { Component } from 'react';
+import player from "./player";
+
 class board extends Component {
     state={
        people: this.props.players,//this.props? maybe only one thing being passed
        turn: this.props.players[0].id
     };
     isTurn=(id)=>{
-        if(turn=id){
+        if(this.state.turn=id){
             return true;
         }
         else{
@@ -22,7 +24,7 @@ class board extends Component {
     
         return (
            <div>
-            {people.map(person=> <player 
+            {this.state.people.map(person=> <player 
             key={person.id} 
             id={person.id}
             name={person.name} 
@@ -55,7 +57,7 @@ class board extends Component {
                 sc=pp[i].moves.toString();
             }
             else{
-                sc=pp[i].scores+", "+score.toString();
+                sc=pp[i].scores+", "+pp[i].moves.toString();
             }
             pp[i]={id: pp[i].id, name: pp[i].name, number: 0, moves: 0, scores: sc}};
        
@@ -74,7 +76,7 @@ class board extends Component {
         this.turn();
         
     }
-    sub1=(id)=>
+    sub1=(pid)=>
     {
         let pp=this.state.people;
         for(let i=0; i<pp.length; i++){
@@ -85,7 +87,7 @@ class board extends Component {
         this.setState({people: pp});    
         this.turn();
     }
-    times2=(id)=>
+    times2=(pid)=>
     {
         let pp=this.state.people;
         for(let i=0; i<pp.length; i++){
@@ -96,7 +98,7 @@ class board extends Component {
         this.setState({people: pp});    
         this.turn();
     }
-    divide2=(id)=>
+    divide2=(pid)=>
     {
         let pp=this.state.people;
         for(let i=0; i<pp.length; i++){
@@ -109,7 +111,7 @@ class board extends Component {
     }
     turn(){
         let t=this.state.turn;
-        if(t==people.length-1){
+        if(t==this.state.people.length-1){
             t=0;
         }
         else{
