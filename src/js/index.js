@@ -1,13 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
+import game from "./100game";
+import tryout from "./tryout";
 
 // import "./index.css";
-
-ReactDOM.render(<App/>, document.getElementById("root"));
+const elm= <h1>stay happy</h1>
+ReactDOM.render(elm, document.getElementById("root"));
 
 //text editor component
-ReactDOM.render(<TextEditor />, document.getElementById("root"));
+//ReactDOM.render(<TextEditor />, document.getElementById("root"));
 
 
 
