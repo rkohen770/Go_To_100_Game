@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 //import game from "./100game";
-import tryout from "./tryout";
+import Tryout from "./Tryout";
 // import "./index.css";
 const elm= <h1>stay happy</h1>
-ReactDOM.render(<tryout/>, document.getElementById("root"));
+ReactDOM.render(<Tryout/>, document.getElementById("root"));
 
 //text editor component
 //ReactDOM.render(<TextEditor />, document.getElementById("root"));

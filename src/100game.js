@@ -1,40 +1,32 @@
 //import { Component } from "react"
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import signIn from "./signInForm";
-import board from "./board";
+import SignIn from "./SignInForm";
+import Board from "../Board";
 
-
-class game extends Component {
-
-    state={
-        ready: false,
-        players: [],
-        numPlayers: 0
+class Game extends Component {
+  state = {
+    ready: false,
+    players: [],
+    numPlayers: 0,
+  };
+  savePlayer = (name) => {
+    let pp = this.state.players;
+    pp.push({ name: name, id: this.state.numPlayer });
+    let num = this.state.numPlayers++;
+    this.setState({ players: pp, numPlayers: num });
+  };
+  renderContent = () => {
+    if (this.state == true) {
+      return <Board players={this.state.players} />;
+    } else {
+      return <SignIn save={this.savePlayer} />;
     }
-    savePlayer=(name)=>{
-        let pp=this.state.players;
-        pp.push({name: name, id: this.state.numPlayer});
-        let num=this.state.numPlayers++;
-        this.setState({players: pp, numPlayers: num})
-    }
-    renderContent=()=>{
-        if(this.state==true){
-            return <board players={this.state.players}/>
-        }
-        else{
-            return <signIn
-            save={this.savePlayer}/>
-        }
-    }
-    render() { 
-        return (
-        <React.Fragment>
-            {this.renderContent}
-        </React.Fragment>
-        );
-    }
+  };
+  render() {
+    return <React.Fragment>{this.renderContent}</React.Fragment>;
+  }
 }
- 
-export default signIn;
+
+export default Game;
 //handle the form...

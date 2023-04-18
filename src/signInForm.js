@@ -1,6 +1,6 @@
 //import { Component } from "react"
 import React, { Component } from 'react';
-class signIn extends Component {
+class SignIn extends Component {
     state={
         name: "enter username here"
     }
@@ -25,5 +25,5 @@ class signIn extends Component {
     }
 }
  
-export default signIn;
+export default SignIn;
 //handle the form...

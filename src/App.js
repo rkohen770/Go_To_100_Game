@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import tryout from './tryout';
+import Tryout from './Tryout';
 class App extends Component {
     state = {  } 
     render() { 
-        return <tryout />;
+        return <Tryout/>;
     }
 }
  

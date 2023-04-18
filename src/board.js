@@ -1,8 +1,8 @@
 //import { Component } from "react"
 import React, { Component } from 'react';
-import player from "./player";
+import Player from '../Player';
 
-class board extends Component {
+class Board extends Component {
     state={
        people: this.props.players,//this.props? maybe only one thing being passed
        turn: this.props.players[0].id
@@ -24,7 +24,7 @@ class board extends Component {
     
         return (
            <div>
-            {this.state.people.map(person=> <player 
+            {this.state.people.map(person=> <Player 
             key={person.id} 
             id={person.id}
             name={person.name} 
@@ -121,7 +121,7 @@ class board extends Component {
     }
 }
 //what component will the board be? contains everything else (instead of the div)
-export default board;
+export default Board;
 //react.fragment in order to be able to play with the styles
 //add connections between all the pages
 //setting attributes in the video shows how to style

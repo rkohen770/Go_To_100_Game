@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-class tryout extends Component {
+class Tryout extends Component {
     //state = {  } 
     render() { 
         return (
@@ -8,4 +8,4 @@ class tryout extends Component {
     }
 }
  
-export default tryout;
+export default Tryout;
