@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 class tryout extends Component {
-    state = {  } 
+    //state = {  } 
     render() { 
         return (
-            <div>works</div>
+            <h1>works</h1>
         );
     }
 }
