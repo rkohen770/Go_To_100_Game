@@ -1,7 +1,6 @@
 //import { Component } from "react"
 import React, { Component } from 'react';
-import Player from '../Player';
-
+import Player from './Player';
 class Board extends Component {
     state={
        people: this.props.players,//this.props? maybe only one thing being passed
