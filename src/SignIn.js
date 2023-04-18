@@ -2,13 +2,15 @@
 import React, { Component } from 'react';
 class SignIn extends Component {
     state={
-        name: "enter username here"
+        name: ""
     }
-    cancel=()=>{
-        this.setState({name: "enter username here"});
-    }
+    
     changed=(val)=>{
         this.setState({name: val});
+    }
+    bb=()=>{
+        console.log("clicked");
+        this.props.save(this.state.name)
     }
     render() { 
         return (
@@ -18,8 +20,8 @@ class SignIn extends Component {
             onChange={(e) => this.changed(e.target.value)}
             />
             </label>
-            <button onClick={()=>this.props.savePlayer(this.state.name)}>save</button>
-            <button onClick={this.cancel}>cancel</button>
+            <button onClick={this.bb}>save</button>
+            <button onClick={this.props.start}>start the game</button>
       </form>
         );
     }
