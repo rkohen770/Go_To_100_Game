@@ -1,18 +1,22 @@
 //import { Component } from "react"
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import SignIn from "./SignInForm";
+import SignIn from "./SignIn";
 import Board from "./Board";
+import Person from "./Person";
+
 class Game extends Component {
   state = {
     ready: false,
+    added: false,
     players: [],
     numPlayers: 0,
   };
   savePlayer = (name) => {
-    console.log("saving "+name);
+    this.setState({added: true})
+    console.log("saving "+ name);
     let pp = this.state.players;
-    pp.push({ name: name, id: this.state.numPlayer });
+    pp.push(new Person(name, this.state.numPlayers));
     let num = this.state.numPlayers++;
     this.setState({ players: pp, numPlayers: num });
   };
@@ -21,12 +25,20 @@ class Game extends Component {
   }
   renderContent = () => {
     console.log("rendering");
-    if (this.state == true) {
-      return <Board players={this.state.players} />;
+    if (this.state.ready == true) {
+      return <h1>{this.state.added}</h1>
+    /*  return <div>
+          {this.state.players.map(person=> <h1>person.id</h1>)
+            
+          }
+      </div>*/
+        
+      //return <Board players={this.state.players} />;
     } else {
       return <SignIn save={this.savePlayer} start={this.startGame}/>;
     }
   };
+ 
   render() {
     return <React.Fragment>{this.renderContent()}</React.Fragment>;
   }

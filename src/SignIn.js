@@ -2,11 +2,9 @@
 import React, { Component } from 'react';
 class SignIn extends Component {
     state={
-        name: "enter username here"
+        name: ""
     }
-    cancel=()=>{
-        this.setState({name: "enter username here"});
-    }
+    
     changed=(val)=>{
         this.setState({name: val});
     }
@@ -23,7 +21,6 @@ class SignIn extends Component {
             />
             </label>
             <button onClick={this.bb}>save</button>
-            <button onClick={this.cancel}>cancel</button>
             <button onClick={this.props.start}>start the game</button>
       </form>
         );
