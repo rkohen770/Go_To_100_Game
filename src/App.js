@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Tryout from './Tryout';
+import Tryout from './src/js/Tryout';
 class App extends Component {
     state = {  } 
     render() { 
