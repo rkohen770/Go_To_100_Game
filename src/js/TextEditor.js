@@ -7,13 +7,17 @@ import "react-quill/dist/quill.snow.css";
 import Mousetrap from "mousetrap";
 
 import Keyboard from "./KeyBoard";
+import ColorBtn from "./ColorBtn";
 
 function TextEditor() {
   const [language, setLanguage] = useState("en");
+  const [shift, setShift] = useState(false);
+  const [keyboardLayout, setKeyboardLayout] = useState("en");
   const [editorValue, setEditorValue] = useState("");
+  const [color, setColor] = useState("black");
 
   const handleKeyPress = (value) => {
-    setEditorValue(editorValue + value);
+    setEditorValue(`${editorValue} ${value}`);
   };
   const editorRef = useRef(null);
 
@@ -30,6 +34,20 @@ function TextEditor() {
       Mousetrap.unbind("mod+u");
     };
   }, []);
+
+  useEffect(() => {
+    // update keyboard layout based on language
+    if (language === "he") {
+      setKeyboardLayout("he");
+    } else {
+      setKeyboardLayout("en");
+    }
+  }, [language]);
+
+  useEffect(() => {
+    //set different color for the selected text in the editor according to the color of the button
+    setColor(color);
+  }, [color]);
 
   const handleLanguageChange = (event) => {
     setLanguage(event.target.value);
@@ -95,7 +113,16 @@ function TextEditor() {
         language={language}
         dir={language === "he" ? "rtl" : "ltr"}
       />
-      <Keyboard onKeyPress={handleKeyPress} />
+      <Keyboard
+        onKeyPress={handleKeyPress}
+        layout={keyboardLayout}
+        language={language}
+      />
+
+      <ColorBtn color={"red"} />
+      <ColorBtn color={"blue"} />
+      <ColorBtn color={"green"} />
+      <ColorBtn color={"yellow"} />
     </div>
   );
 }

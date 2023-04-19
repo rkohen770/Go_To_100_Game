@@ -2,8 +2,8 @@ import React from "react";
 import Key  from "./Key";
 //import "./Keyboard.css";
 
-function Keyboard({ onKeyPress, shift=false }) {
-  const keys = [
+function Keyboard({ onKeyPress, shift=false,language }) {
+  const englishKeys = [
     [
       { id: "backquote", value: "`", display: "`", shiftDisplay: "~" },
       { id: "digit1", value: "1", display: "1", shiftDisplay: "!" },
@@ -21,7 +21,7 @@ function Keyboard({ onKeyPress, shift=false }) {
       { id: "backspace", value: "Backspace", display: "Backspace" },
     ],
     [
-      { id: "tab", value: "Tab", display: "Tab" },
+      { id: "tab", value: "\t", display: "Tab" },
       { id: "keyq", value: "q", display: "Q", shiftDisplay: "q" },
       { id: "keyw", value: "w", display: "W", shiftDisplay: "w" },
       { id: "keye", value: "e", display: "E", shiftDisplay: "e" },
@@ -66,13 +66,81 @@ function Keyboard({ onKeyPress, shift=false }) {
       { id: "rightshift", value: "Shift", display: "Shift" },
     ],
     [
-      { id: "leftctrl", value: "Ctrl", display: "Ctrl" },
-      { id: "leftalt", value: "Alt", display: "Alt" },
-      { id: "space", value: " ", display: " ", shiftDisplay: " " },
-      { id: "rightalt", value: "Alt", display: "Alt" },
-      { id: "rightctrl", value: "Ctrl", display: "Ctrl" },
+      { id: "space", value: " ", display: "                      ", shiftDisplay: " " },
     ],
   ];
+
+  // hebrew keyboard
+  const hebrewKeys = [
+    [
+      { id: "digit1", value: "1", display: "1", shiftDisplay: "!" },
+      { id: "digit2", value: "2", display: "2", shiftDisplay: "@" },
+      { id: "digit3", value: "3", display: "3", shiftDisplay: "#" },
+      { id: "digit4", value: "4", display: "4", shiftDisplay: "$" },
+      { id: "digit5", value: "5", display: "5", shiftDisplay: "%" },
+      { id: "digit6", value: "6", display: "6", shiftDisplay: "^" },
+      { id: "digit7", value: "7", display: "7", shiftDisplay: "&" },
+      { id: "digit8", value: "8", display: "8", shiftDisplay: "*" },
+      { id: "digit9", value: "9", display: "9", shiftDisplay: "(" },
+      { id: "digit0", value: "0", display: "0", shiftDisplay: ")" },
+      { id: "minus", value: "-", display: "-", shiftDisplay: "_" },
+      { id: "equal", value: "=", display: "=", shiftDisplay: "+" },
+      { id: "backspace", value: "Backspace", display: "Backspace" },
+    ],
+    [
+      { id: "tab", value: "\t", display: "Tab" },
+      { id: "keyq", value: "/", display: "/", shiftDisplay: "Q" },
+      { id: "keyw", value: "'", display: "'", shiftDisplay: "W" },
+      { id: "keye", value: "ק", display: "ק", shiftDisplay: "E" },
+      { id: "keyr", value: "ר", display: "ר", shiftDisplay: "R" },
+      { id: "keyt", value: "א", display: "א", shiftDisplay: "T" },
+      { id: "keyy", value: "ט", display: "ט", shiftDisplay: "Y" },
+      { id: "keyu", value: "ו", display: "ו", shiftDisplay: "U" },
+      { id: "keyi", value: "ן", display: "ן", shiftDisplay: "I" },
+      { id: "keyo", value: "ם", display: "ם", shiftDisplay: "O" },
+      { id: "keyp", value: "פ", display: "פ", shiftDisplay: "P" },
+      { id: "bracketleft", value: "[", display: "[", shiftDisplay: "{" },
+      { id: "bracketright", value: "]", display: "]", shiftDisplay: "}" },
+      { id: "backslash", value: "\\", display: "\\", shiftDisplay: "|" },
+    ],
+    [
+      { id: "keya", value: "ש", display: "ש", shiftDisplay: "A" },
+      { id: "keys", value: "ד", display: "ד", shiftDisplay: "S" },
+      { id: "keyd", value: "ג", display: "ג", shiftDisplay: "D" },
+      { id: "keyf", value: "כ", display: "כ", shiftDisplay: "F" },
+      { id: "keyg", value: "ע", display: "ע", shiftDisplay: "G" },
+      { id: "keyh", value: "י", display: "י", shiftDisplay: "H" },
+      { id: "keyj", value: "ח", display: "ח", shiftDisplay: "J" },
+      { id: "keyk", value: "ל", display: "ל", shiftDisplay: "K" },
+      { id: "keyl", value: "ך", display: "ך", shiftDisplay: "L" },
+      { id: "semicolon", value: ";", display: ";", shiftDisplay: ":" },
+      { id: "quote", value: "'", display: "'", shiftDisplay: '"' },
+      { id: "enter", value: "\n", display: "Enter" },
+    ],
+    [
+      { id: "leftshift", value: "Shift", display: "Shift" },
+      { id: "keyz", value: "ז", display: "ז", shiftDisplay: "Z" },
+      { id: "keyx", value: "ס", display: "ס", shiftDisplay: "X" },
+      { id: "keyc", value: "ב", display: "ב", shiftDisplay: "C" },
+      { id: "keyv", value: "ה", display: "ה", shiftDisplay: "V" },
+      { id: "keyb", value: "נ", display: "נ", shiftDisplay: "B" },
+      { id: "keyn", value: "מ", display: "מ", shiftDisplay: "N" },
+      { id: "keym", value: "צ", display: "צ", shiftDisplay: "M" },
+      { id: "comma", value: ",", display: ",", shiftDisplay: "<" },
+      { id: "period", value: ".", display: ".", shiftDisplay: ">" },
+      { id: "slash", value: "/", display: "/", shiftDisplay: "?" },
+      { id: "rightshift", value: "Shift", display: "Shift" },
+    ],
+    [
+      { id: "space", value: " ", display: "                      " },
+      
+    ],
+  ];
+
+  
+  
+  // when the language changes, the keyboard should be updated
+  
 
   const handleKeyPress = (key) => {
     if (onKeyPress) {
@@ -80,6 +148,8 @@ function Keyboard({ onKeyPress, shift=false }) {
     }
   };
 
+  //select the keys to display based on the language
+  const keys = language === "en" ? englishKeys : hebrewKeys;
   return (
     <div className="keyboard">
       {keys.map((row, i) => (
