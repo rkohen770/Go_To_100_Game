@@ -8,10 +8,7 @@ class SignIn extends Component {
     changed=(val)=>{
         this.setState({name: val});
     }
-    bb=()=>{
-        console.log("clicked");
-        this.props.save(this.state.name)
-    }
+   
     render() { 
         return (
         <form>
@@ -20,7 +17,7 @@ class SignIn extends Component {
             onChange={(e) => this.changed(e.target.value)}
             />
             </label>
-            <button onClick={this.bb}>save</button>
+            <button onClick={()=>this.props.save(this.state.name)}>save</button>
             <button onClick={this.props.start}>start the game</button>
       </form>
         );
