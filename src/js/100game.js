@@ -9,7 +9,7 @@ class Game extends Component {
   state = {
     ready: false,
     toAdd: true,
-    players: [new Person("shiffy", 0, 0, 0, "you haven't won any games yet"), new Person("peretz", 1, 0, 0, "you haven't won any games yet"), new Person("benzion", 2, 0, 0, "you haven't won any games yet")],
+    players: [],
     numPlayers: 0,
   };
   savePlayer = name => {
@@ -34,17 +34,19 @@ class Game extends Component {
     this.setState({toAdd: true})
   }
   renderContent = () => {
+
       if (this.state.ready ==true) {
         return <Board players={this.state.players} />;
     } else{
+      
         if(this.state.toAdd==true){
-          return <SignIn save={this.savePlayer} start={this.startGame}/>;
+          return <SignIn save={this.savePlayer}/>;
         }
         else{
           return <div>
             <button onClick={this.addPlayer}>add a player</button>
             <button onClick={this.startGame}>start the game</button>
-          </div>
+          </div>;
           
         }
       
@@ -54,13 +56,21 @@ class Game extends Component {
   }
  
   render() {
+    
     return <React.Fragment>
-      {this.renderContent}
+      {this.renderContent()}
       </React.Fragment>;
   }
 }
 
 export default Game;
-//handle the form...
 
+
+
+//to do:
+/*
+one button presses for everybody --fix
+turns!
+styles
+*/
 
