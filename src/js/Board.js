@@ -1,6 +1,7 @@
 //import { Component } from "react"
 import React, { Component } from 'react';
 import Player from './Player';
+import Person from './Person';
 class Board extends Component {
     state={
        people: this.props.players,//this.props? maybe only one thing being passed
@@ -15,10 +16,8 @@ class Board extends Component {
         }
     }
     render() { 
-     /*  1. send more info?
-         2. switch "div" with some better way to set up the board and style-- see previous projects
+/*         2. switch "div" with some better way to set up the board and style-- see previous projects
          4. figure out how to know when to switch turns. can be something in player or here?
-         5. not "product" what do you pass?
      */
     
         return (
@@ -27,7 +26,9 @@ class Board extends Component {
             key={person.id} 
             id={person.id}
             name={person.name} 
-            number={0}
+            number={person.number}
+            moves={person.moves}
+            scores={person.scores}
             turn={this.isTurn(person.id)}//use this in player
             onLeave={this.leave}
             onNewGame={this.newGame}
@@ -58,7 +59,8 @@ class Board extends Component {
             else{
                 sc=pp[i].scores+", "+pp[i].moves.toString();
             }
-            pp[i]={id: pp[i].id, name: pp[i].name, number: 0, moves: 0, scores: sc}};
+            pp[i]=new Person(pp[i].name, pp[i].id, Math.floor(Math.random() * 100) , 0, sc)
+        };
        
     }
     this.setState({people: pp});
@@ -68,11 +70,12 @@ class Board extends Component {
         let pp=this.state.people;
         for(let i=0; i<pp.length; i++){
             if(pp[i].id==pid){
-                pp[i]={id: pp[i].id, name: pp[i].name, number: pp[i].number+1, moves: pp[i].moves++, scores: pp[i].scores}};
+                pp[i].number++;
+                pp[i].moves++;            };
         
         }
         this.setState({people: pp});
-        this.turn();
+        //this.turn();
         
     }
     sub1=(pid)=>
@@ -80,33 +83,38 @@ class Board extends Component {
         let pp=this.state.people;
         for(let i=0; i<pp.length; i++){
             if(pp[i].id==pid){
-                pp[i]={id: pp[i].id, name: pp[i].name, number: pp[i].number-1, moves: pp[i].moves++, scores: pp[i].scores}};
+                pp[i].number--;
+                pp[i].moves++;
+            };
         
         }
         this.setState({people: pp});    
-        this.turn();
+        //this.turn();
     }
     times2=(pid)=>
     {
         let pp=this.state.people;
         for(let i=0; i<pp.length; i++){
             if(pp[i].id==pid){
-                pp[i]={id: pp[i].id, name: pp[i].name, number: pp[i].number*2, moves: pp[i].moves++, scores: pp[i].scores}};
+                pp[i].number=pp[i].number*2;
+                pp[i].moves++;
+            };
         
         }
         this.setState({people: pp});    
-        this.turn();
+        //this.turn();
     }
     divide2=(pid)=>
     {
         let pp=this.state.people;
         for(let i=0; i<pp.length; i++){
             if(pp[i].id==pid){
-                pp[i]={id: pp[i].id, name: pp[i].name, number: pp[i].number/2, moves: pp[i].moves++, scores: pp[i].scores}};
+                pp[i].number=pp[i].number/2;
+                pp[i].moves++;            };
         
         }
         this.setState({people: pp});    
-        this.turn();
+        //this.turn();
     }
     turn(){
         let t=this.state.turn;

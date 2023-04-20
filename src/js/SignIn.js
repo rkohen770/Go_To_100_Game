@@ -1,27 +1,30 @@
 //import { Component } from "react"
 import React, { Component } from 'react';
+import Person from './Person';
 class SignIn extends Component {
     state={
-        name: ""
+        name: "",
+        players: [],
+        numPlayers: 0
     }
     
     changed=(val)=>{
         this.setState({name: val});
     }
+  
    
-    render() { 
+    render=()=> { 
+        //fix form
+      
         return (
-        <form>
-            <label>Enter your name:
-            <input type="text"
-            onChange={(e) => this.changed(e.target.value)}
-            />
+          <form onSubmit={()=>this.props.save(this.state.name)}>
+            <label>Enter your name or type "ready" to start the game:
+              <input type="text" onChange={(e) => this.changed(e.target.value)} />
             </label>
-            <button onClick={()=>this.props.save(this.state.name)}>save</button>
-            <button onClick={this.props.start}>start the game</button>
-      </form>
+            <button type="submit">enter</button>
+          </form>
         );
-    }
+      }
 }
  
 export default SignIn;

@@ -5,15 +5,6 @@ class Player extends Component {
     if (this.props.number == 100) {
       return (
         <div>
-          <button onClick={() => this.props.onAdd(this.props.id)}>+1</button>
-          <button onClick={() => this.props.onSub(this.props.id)}>-1</button>
-          <button onClick={() => this.props.onTimes(this.props.id)}>x2</button>
-          <button onClick={() => this.props.onDiv(this.props.id)}>/2</button>
-        </div>
-      );
-    } else {
-      return (
-        <div>
           <button onClick={() => this.props.onLeave(this.props.id)}>
             leave
           </button>
@@ -21,17 +12,28 @@ class Player extends Component {
             new game
           </button>
         </div>
+        
+      );
+    } else {
+      return (
+        <div>
+          <button onClick={() => this.props.onAdd(this.props.id)}>+1</button>
+          <button onClick={() => this.props.onSub(this.props.id)}>-1</button>
+          <button onClick={() => this.props.onTimes(this.props.id)}>x2</button>
+          <button onClick={() => this.props.onDiv(this.props.id)}>/2</button>
+        </div>
       );
     }
   };
+  //do turns!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   render() {
     return (
-      <div>
+      <div>//do turns!
         <h1>{this.props.name}</h1>
         <p>{this.props.number}</p>
         <p>moves: {this.props.moves}</p>
-        {this.renderButtons}
-        <p>scores</p>
+        {this.renderButtons()}
+        <p>scores: {this.props.scores}</p>
       </div>
     );
   }

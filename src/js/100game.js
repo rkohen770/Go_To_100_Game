@@ -7,40 +7,56 @@ import Person from "./Person";
 
 class Game extends Component {
   state = {
-    added: false,
-    ready: false, 
-    players: [],
+    ready: false,
+    toAdd: true,
+    players: [new Person("shiffy", 0, 0, 0, "you haven't won any games yet"), new Person("peretz", 1, 0, 0, "you haven't won any games yet"), new Person("benzion", 2, 0, 0, "you haven't won any games yet")],
     numPlayers: 0,
   };
   savePlayer = name => {
-    this.setState({added: true});
-    console.log(this.state.added);
-    let pp = this.state.players;
-    pp.push(new Person(name, this.state.numPlayers));
-    let num = this.state.numPlayers++;
-    this.setState({ players: pp, numPlayers: num });
+    console.log("here")
+    if(name=="ready" || name=="Ready"){
+      this.startGame();
+    }
+    else{
+      this.setState({added: true});
+      console.log(this.state.added);
+      let pp = this.state.players;
+      pp.push(new Person(name, this.state.numPlayers, Math.floor(Math.random() * 100) , 0, "you haven't won any games yet"));
+      let num = this.state.numPlayers++;
+      this.setState({ toAdd: false, players: pp, numPlayers: num });
+    }
+    
   }
   startGame=()=>{
     this.setState({ready: true});
   }
+  addPlayer=()=>{
+    this.setState({toAdd: true})
+  }
   renderContent = () => {
-    console.log("rendering");
-    if (this.state.ready == true) {
-      return <h1>{this.state.added}</h1>//should be true
-    /*  return <div>
-          {this.state.players.map(person=> <h1>person.id</h1>)
-            
-          }
-      </div>*/
-        
-      //return <Board players={this.state.players} />;
-    } else {
-      return <SignIn save={this.savePlayer} start={this.startGame}/>;
+      if (this.state.ready ==true) {
+        return <Board players={this.state.players} />;
+    } else{
+        if(this.state.toAdd==true){
+          return <SignIn save={this.savePlayer} start={this.startGame}/>;
+        }
+        else{
+          return <div>
+            <button onClick={this.addPlayer}>add a player</button>
+            <button onClick={this.startGame}>start the game</button>
+          </div>
+          
+        }
+      
     }
+    
+        
   }
  
   render() {
-    return <React.Fragment>{this.renderContent()}</React.Fragment>;
+    return <React.Fragment>
+      {this.renderContent}
+      </React.Fragment>;
   }
 }
 
