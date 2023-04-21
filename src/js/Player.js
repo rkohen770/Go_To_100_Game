@@ -25,10 +25,17 @@ class Player extends Component {
       );
     }
   };
-  //do turns!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  turn=()=>{
+    if(this.props.turn==true){
+      return "turn";
+    }
+    else{
+      return "notTurn";
+    }
+  }
   render() {
     return (
-      <div>//do turns!
+      <div className={this.turn}>
         <h1>{this.props.name}</h1>
         <p>{this.props.number}</p>
         <p>moves: {this.props.moves}</p>
@@ -38,28 +45,9 @@ class Player extends Component {
     );
   }
 
-  /*
-    newGame=()=>{
-        let score=this.state.moves;
-        this.setState({number: 0});
-        this.setState({moves: 0});
-        if(this.state.scores=="you haven't won any games yet"){
-            this.setState({scores: (this.state.moves).toString()});
-        }
-        else{
-            this.setState({scores: this.state.scores+", "+score.toString()});
-        }
 
-    }*/
 }
-//inside the div put all the player's info
-//h1 header is player's name
-//number
-//steps
-//make functions...
-//scores
+
 export default Player;
 
-//on a board there are players
-//send enabled status in props, rerender every time?
-//
+

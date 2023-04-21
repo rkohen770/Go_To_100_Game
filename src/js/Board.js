@@ -75,7 +75,7 @@ class Board extends Component {
         
         }
         this.setState({people: pp});
-        //this.turn();
+        this.turn();
         
     }
     sub1=(pid)=>
@@ -89,7 +89,7 @@ class Board extends Component {
         
         }
         this.setState({people: pp});    
-        //this.turn();
+        this.turn();
     }
     times2=(pid)=>
     {
@@ -102,7 +102,7 @@ class Board extends Component {
         
         }
         this.setState({people: pp});    
-        //this.turn();
+        this.turn();
     }
     divide2=(pid)=>
     {
@@ -114,7 +114,7 @@ class Board extends Component {
         
         }
         this.setState({people: pp});    
-        //this.turn();
+        this.turn();
     }
     turn(){
         let t=this.state.turn;
@@ -137,4 +137,3 @@ export default Board;
 
 //TO DO: 
 //       figure out how when and where to switch turns
-//       make a "person" class?
