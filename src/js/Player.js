@@ -1,5 +1,7 @@
 //import { Component } from "react"
 import React, { Component } from "react";
+import "../css/gamestyle.css";
+
 class Player extends Component {
   renderButtons = () => {
     if (this.props.number == 100) {
@@ -35,7 +37,7 @@ class Player extends Component {
   }
   render() {
     return (
-      <div className={this.turn}>
+      <div className={this.turn()}>
         <h1>{this.props.name}</h1>
         <p>{this.props.number}</p>
         <p>moves: {this.props.moves}</p>
