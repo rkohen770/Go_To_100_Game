@@ -1,0 +1,18 @@
+.space {
+  width: 50%;
+  height: 2rem;
+  background: grey;
+}
+
+.key {
+  padding: 0.5rem;
+  border-radius: 2px;
+}
+
+.key:active {
+  background: white;
+}
+
+.active {
+  background: whitesmoke;
+}

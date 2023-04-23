@@ -1,13 +1,38 @@
 import React from "react";
 
-function Key({ id, display, value, onPress }) {
+import "../css/key.css";
+
+function Key({ Key, onKeyPress, isCaps, isShift }) {
+  const classList = ["key"];
   const handleClick = () => {
-    onPress(value);
+    if (Key === "delete") {
+      onKeyPress("delete ");
+      classList += "delete";
+    } else if (Key === "enter") {
+      onKeyPress("enter");
+      classList += "enter";
+    } else if (Key === "caps lock") {
+      isCaps ? (classList += "active") : (classList -= "active");
+      onKeyPress("caps lock");
+      classList += "caps lock";
+    } else if (Key === "shift") {
+      isShift ? (classList += "active") : (classList -= "active");
+      onKeyPress("shift");
+      classList += "shift";
+    } else if (Key === "space") {
+      onKeyPress("\n");
+      classList += "space";
+    } else {
+      if (isCaps) {
+        Key = Key.toUpperCase();
+      }
+      onKeyPress(Key);
+    }
   };
 
   return (
-    <div className={`key ${id}`} onClick={handleClick}>
-      {display}
+    <div className={classList} onClick={handleClick}>
+      {onKeyPress(Key)}
     </div>
   );
 }

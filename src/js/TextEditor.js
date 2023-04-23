@@ -1,16 +1,18 @@
 //text editor component
-import "draft-js/dist/Draft.css";
+// import "draft-js/dist/Draft.css";
 
 import ReactQuill from "react-quill";
 import { useState, useEffect, useRef } from "react";
 import "react-quill/dist/quill.snow.css";
 import Mousetrap from "mousetrap";
 
+import ColorButton from "./ColorButton";
 import Keyboard from "./KeyBoard";
 
 function TextEditor() {
   const [language, setLanguage] = useState("en");
   const [editorValue, setEditorValue] = useState("");
+ 
 
   const handleKeyPress = (value) => {
     setEditorValue(editorValue + value);
@@ -79,12 +81,7 @@ function TextEditor() {
 
   return (
     <div>
-      <label htmlFor="language">Language:</label>
-      <select id="language" value={language} onChange={handleLanguageChange}>
-        <option value="en">English</option>
-        <option value="he">Hebrew</option>
-      </select>
-      <ReactQuill
+      {/* <ReactQuill
         ref={editorRef}
         modules={{
           toolbar: [["bold", "italic", "underline"]],
@@ -94,8 +91,11 @@ function TextEditor() {
         onChange={handleEditorChange}
         language={language}
         dir={language === "he" ? "rtl" : "ltr"}
-      />
-      <Keyboard onKeyPress={handleKeyPress} />
+      /> */}
+      <div className="contaner">
+        
+        <Keyboard onKeyPress={handleKeyPress} />
+      </div>
     </div>
   );
 }

@@ -1,15 +1,32 @@
 import React from "react";
 import Key  from "./Key";
 import "../css/keyboard.css";
+import ColorButton from "./ColorButton";
 
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 
 function Keyboard() {
   const [text, setText] = useState('');
   const [isCaps, setIsCaps] = useState(false);
+  const [language, setLanguage] = useState("en");
+
+
+  const colors = {
+    black: "#000000",
+    red: "#ff0000",
+    blue: "#0000ff",
+    green: "#00ff00",
+    yellow: "#ffff00",
+    pink: "#ff00ff",
+    purple: "#800080",
+    orange: "#ffa500",
+  };
 
   const handleEnter = () => {
-    setText((prevText) => prevText + '\n');
+    setText((prevText) => prevText + "\n");
+  };
+  const handleLanguageChange = (event) => {
+    setLanguage(event.target.value);
   };
 
   const handleSpace = () => {
@@ -32,17 +49,47 @@ function Keyboard() {
     setText((prevText) => prevText + (isCaps ? key.toUpperCase() : key.toLowerCase()));
   };
 
-  const keys = [    ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'delete'],
-    ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
-    ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', "'", 'enter'],
-    ['caps lock', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', 'shift'],
-    ['space'],
+  
+  const englishKeys = [   ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+'],
+    ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'delete'],
+    [ "q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "[", "]", "\\", "'"],
+    ["caps lock","a", "s", "d", "f", "g", "h", "j", "k", "l", ";", "'", "enter"],
+    [ "z", "x", "c", "v", "b", "n", "m", ",", ".", "/", "?"],
+    ["space"],
+  ];
+  const hebrewKeys = [    ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+'],
+    [ '`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'delete'],
+    [ "ק", "ר", "א", "ט", "ו", "ן", "ם", "פ", "]", "[","]","\\", "'"],
+    ["caps lock", "ש", "ד", "ג", "כ", "ע", "י", "ח", "ל", "ך", "ף", "enter"],
+    ["ז", "ס", "ב", "ה", "נ", "מ", "צ", "ת", "ץ",".", "/","?"],
+    ["space"],
   ];
 
+   //select the keys to display based on the language
+    const keys = language === "en" ? englishKeys : hebrewKeys;
+
+
   return (
+    <div className="editor" >
+    <div className="textContainer">{text}</div>
+    <div className="container">
+    <label htmlFor="language">Language:</label>
+    <select id="language" value={language} onChange={handleLanguageChange}>
+      <option value="en">English</option>
+      <option value="he">Hebrew</option>
+    </select>
+    <div className="color-picker">
+      <ColorButton color={colors.red} />
+      <ColorButton color={colors.blue} />
+      <ColorButton color={colors.green} />
+      <ColorButton color={colors.yellow} />
+      <ColorButton color={colors.pink} />
+      <ColorButton color={colors.purple} />
+      <ColorButton color={colors.orange} />
+      <ColorButton color={colors.black} />
+    </div>
     <div className="keyboard">
-      <div className="textContainer">{text}</div>
-      {keys.map((row, index) => (
+      {englishKeys.map((row, index) => (
         <div className="row" key={index}>
           {row.map((key) => (
             <div
@@ -62,6 +109,8 @@ function Keyboard() {
           ))}
         </div>
       ))}
+    </div>
+    </div>
     </div>
   );
 }
