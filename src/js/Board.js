@@ -2,13 +2,15 @@
 import React, { Component } from 'react';
 import Player from './Player';
 import Person from './Person';
+import "../css/gamestyle.css";
+
 class Board extends Component {
     state={
        people: this.props.players,//this.props? maybe only one thing being passed
        turn: this.props.players[0].id
     };
     isTurn=(id)=>{
-        if(this.state.turn=id){
+        if(this.state.turn==id){
             return true;
         }
         else{
@@ -16,13 +18,11 @@ class Board extends Component {
         }
     }
     render() { 
-/*         2. switch "div" with some better way to set up the board and style-- see previous projects
-         4. figure out how to know when to switch turns. can be something in player or here?
-     */
+
     
         return (
-           <div>
-            {this.state.people.map(person=> <Player 
+           <div className="players">
+            {this.state.people.map(person=> <Player  
             key={person.id} 
             id={person.id}
             name={person.name} 
@@ -75,7 +75,7 @@ class Board extends Component {
         
         }
         this.setState({people: pp});
-        //this.turn();
+        this.turn();
         
     }
     sub1=(pid)=>
@@ -89,7 +89,7 @@ class Board extends Component {
         
         }
         this.setState({people: pp});    
-        //this.turn();
+        this.turn();
     }
     times2=(pid)=>
     {
@@ -102,7 +102,7 @@ class Board extends Component {
         
         }
         this.setState({people: pp});    
-        //this.turn();
+        this.turn();
     }
     divide2=(pid)=>
     {
@@ -114,7 +114,7 @@ class Board extends Component {
         
         }
         this.setState({people: pp});    
-        //this.turn();
+        this.turn();
     }
     turn(){
         let t=this.state.turn;
@@ -137,4 +137,3 @@ export default Board;
 
 //TO DO: 
 //       figure out how when and where to switch turns
-//       make a "person" class?
