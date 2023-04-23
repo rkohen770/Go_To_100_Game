@@ -19,10 +19,10 @@ class Player extends Component {
     } else {
       return (
         <div>
-          <button onClick={() => this.props.onAdd(this.props.id)}>+1</button>
-          <button onClick={() => this.props.onSub(this.props.id)}>-1</button>
-          <button onClick={() => this.props.onTimes(this.props.id)}>x2</button>
-          <button onClick={() => this.props.onDiv(this.props.id)}>/2</button>
+          <button onClick={() => this.props.onAdd(this.props.id)} disabled={!this.props.turn}>+1</button>
+          <button onClick={() => this.props.onSub(this.props.id)} disabled={!this.props.turn}>-1</button>
+          <button onClick={() => this.props.onTimes(this.props.id)} disabled={!this.props.turn}>x2</button>
+          <button onClick={() => this.props.onDiv(this.props.id)} disabled={!this.props.turn}>/2</button>
         </div>
       );
     }
