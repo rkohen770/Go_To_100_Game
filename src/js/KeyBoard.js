@@ -1,4 +1,4 @@
-import React from "react";
+/*import React from "react";
 import Key  from "./Key";
 import "../css/keyboard.css";
 import ColorButton from "./ColorButton";
@@ -117,7 +117,7 @@ function Keyboard() {
 
 export default Keyboard;
 
-
+*/
 
 
 
