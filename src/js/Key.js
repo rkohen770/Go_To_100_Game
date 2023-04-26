@@ -1,4 +1,4 @@
-import React from "react";
+/*import React from "react";
 
 import "../css/key.css";
 
@@ -37,4 +37,4 @@ function Key({ Key, onKeyPress, isCaps, isShift }) {
   );
 }
 
-export default Key;
+export default Key;*/
