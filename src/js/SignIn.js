@@ -1,6 +1,6 @@
-//import { Component } from "react"
 import React, { Component } from 'react';
 import Person from './Person';
+import "../css/background.css";
 class SignIn extends Component {
   state={
       name: "",
@@ -18,9 +18,8 @@ class SignIn extends Component {
     
       return (
         <form onSubmit={()=>this.props.save(this.state.name)}>
-          <label>Enter your name or type "ready" to start the game:
-            <input type="text" onChange={(e) => this.changed(e.target.value)} />
-          </label>
+          <label >Enter your name:</label> 
+          <input type="text" onChange={(e)=>this.changed(e.target.value)} />
           <button type="submit">enter</button>
         </form>
       );
