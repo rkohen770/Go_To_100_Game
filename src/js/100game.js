@@ -2,8 +2,10 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import SignIn from "./SignIn";
-import Board from "./Board";
+import Board from './Board';
 import Person from "./Person";
+import "../css/gamestyle.css";
+
 
 class Game extends Component {
   state = {

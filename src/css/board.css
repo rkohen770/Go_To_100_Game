@@ -1,0 +1,33 @@
+body {
+  --turn-color: rgb(160, 204, 58);
+  --not-turn-color: rgb(221, 25, 25);
+}
+
+.players {
+  margin: 2rem;
+  display: flex;
+
+  grid-gap: 1rem;
+}
+
+.turn {
+  border: 4px solid var(--turn-color);
+  background-color: rgba(186, 238, 65, 0.1);
+}
+
+.notTurn {
+  border: 4px solid var(--not-turn-color);
+  background-color: rgba(180, 127, 127, 0.1);
+}
+
+.turn .action {
+  background-color: rgba(186, 238, 65, 0.2);
+  border: 2px solid var(--turn-color);
+  color: var(--turn-color);
+}
+
+.notTurn .action {
+  background-color: rgba(180, 127, 127, 0.2);
+  border: 2px solid var(--not-turn-color);
+  color: var(--not-turn-color);
+}

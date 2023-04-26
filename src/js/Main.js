@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Word from './Word';
 import Game from './100game';
+import "../css/background.css"
 class Main extends Component {
     state = { 
         game: false,
