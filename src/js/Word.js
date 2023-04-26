@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import KeyBoard from './KeyboardNew';
 import TextArea from './TextArea';
-<<<<<<< HEAD
 import Colors from './Colors';
-=======
 import "../css/keyboard.css"
 import "../css/key.css"
 import "../css/colorButton.css"
 import "../css/background.css"
 
->>>>>>> b17d7ac02debf37294c5ddce9473a048e84876bc
 class Word extends Component {
     state = { 
         text: "",
