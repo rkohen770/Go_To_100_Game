@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import KeyBoard from './KeyboardNew';
 import TextArea from './TextArea';
+import "../css/keyboard.css"
+import "../css/key.css"
+import "../css/colorButton.css"
+import "../css/background.css"
+
 class Word extends Component {
     state = { 
         text: "you cant type",

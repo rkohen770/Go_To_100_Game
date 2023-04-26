@@ -1,7 +1,6 @@
 //import { Component } from "react"
 import React, { Component } from "react";
-import "../css/background.css";
-import "../css/gamestyle.css";
+import "../css/player.css";
 
 
 class Player extends Component {

@@ -2,8 +2,7 @@
 import React, { Component } from "react";
 import Player from "./Player";
 import Person from "./Person";
-import "../css/gamestyle.css";
-
+import "../css/board.css";
 class Board extends Component {
   state = {
     people: this.props.players, //this.props? maybe only one thing being passed

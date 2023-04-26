@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import Person from './Person';
-import "../css/background.css";
+import "../css/signin.css"
 class SignIn extends Component {
   state={
       name: "",
