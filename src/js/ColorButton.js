@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+/*import { useEffect } from "react";
 import "../css/colorButton.css";
 
 function ColorButton({ color, onClick,text,indexX,indexY }) {
@@ -17,4 +17,4 @@ function ColorButton({ color, onClick,text,indexX,indexY }) {
   );
 }
 
-export default ColorButton;
+export default ColorButton;*/

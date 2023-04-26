@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import "../css/keyboard.css";
+
 class Key extends Component {
     state = {  } 
     render() { 
         return (
-            <button onClick={()=>this.props.clickKey(this.props.key)}>{this.props.key}</button>
+            <button className='key' onClick={()=>this.props.clickKey(this.props.letter)}>{this.props.letter}</button>
         );
     }
 }

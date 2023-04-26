@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import KeyBoard from './KeyboardNew';
 import TextArea from './TextArea';
+import Colors from './Colors';
 class Word extends Component {
     state = { 
-        text: "you cant type",
+        text: "",
         capsLock: false,
-        shift: false
+        shift: false,
+        language: "en",
      } 
     handleEnter = () => {
-     let prevText=this.state.text+"/n";
+     let prevText=this.state.text+"\n";
      this.setState({text: prevText});
     };
     
@@ -18,7 +20,7 @@ class Word extends Component {
     };
 
     handleDelete = () => {
-        let prevText=this.state.text+" ";
+        let prevText=this.state.text;
         prevText = prevText.substring(0, prevText.length - 1);
         this.setState({text: prevText});
     };
@@ -56,11 +58,23 @@ class Word extends Component {
 
         }
     };
+    handleLanguageChange = (event) => {
+        this.setState({language: event.target.value});
+      };  
+    switchColor=(color)=>{
+        //how to change color?
+    }
     render() { 
         return (  
             <div>
+                <label >Language:</label>
+                <select id="language" value={this.state.language} onChange={this.handleLanguageChange}>
+                <option value="en">English</option>
+                <option value="he">Hebrew</option>
+                </select>
+                <Colors switchColor={this.switchColor}/>
                 <TextArea text={this.state.text}/>
-                <KeyBoard enter={this.handleEnter} space={this.handleSpace}
+                <KeyBoard langauge={this.state.language} enter={this.handleEnter} space={this.handleSpace}
                 delete={this.handleDelete} caps={this.handleCapsLock}
                 shift={this.handleShift} press={this.handleKeyPress}/>
             </div> 
@@ -69,3 +83,45 @@ class Word extends Component {
 }
  
 export default Word;
+
+
+/*
+TO DO:
+1. fix the enter key
+2. (add shift key?)
+3. make the keys uppercase when CAPS is pressed
+4. add all the other stuff
+
+
+<label htmlFor="language">Language:</label>
+                <select id="language" value={this.state.language} onChange={this.handleLanguageChange()}>
+                <option value="en">English</option>
+                <option value="he">Hebrew</option>
+                </select>
+
+
+
+
+
+
+                /*import { useEffect } from "react";
+import "../css/colorButton.css";
+
+function ColorButton({ color, onClick,text,indexX,indexY }) {
+    
+  useEffect(() => {
+    console.log("color changed");
+  }, [color]);
+
+  return (
+    <button className="color-button {color}"
+      style={{ backgroundColor: color }}
+      onClick={() => onClick(text,indexX,indexY)}
+    >
+        {text}
+    </button>
+  );
+}
+
+export default ColorButton;*/
+

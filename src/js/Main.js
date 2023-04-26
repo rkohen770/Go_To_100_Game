@@ -5,7 +5,7 @@ class Main extends Component {
     state = { 
         game: false,
         keyboard: false
-     } 
+    } 
     game=()=>{
         this.setState({game: true})
     }

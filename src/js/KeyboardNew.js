@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Key from './KeyNew';
+import "../css/keyboard.css";
+
 class KeyBoard
  extends Component {
     state = { 
@@ -16,9 +18,7 @@ class KeyBoard
         ["caps lock", "ש", "ד", "ג", "כ", "ע", "י", "ח", "ל", "ך", "ף", "enter"],
         ["ז", "ס", "ב", "ה", "נ", "מ", "צ", "ת", "ץ",".", "/","?"],
         ["space"],
-    ],
-    
-
+    ]
     } 
     
     clicked=(key)=>{
@@ -30,12 +30,19 @@ class KeyBoard
         else this.props.press(key);
     }
     render() { 
+      let lang;
+      if(this.props.language=="en"){
+        lang=this.state.englishKeys;
+      }
+      else{
+        lang=this.state.hebrewKeys;
+      }
         return (
           <div className="keyboard">
-          {this.state.englishKeys.map((row, index) => (
+          {lang.map((row, index) => (
             <div className="row" key={index}>
               {row.map((k) => (
-                  <Key key={k} clickKey={this.clicked}/>
+                  <Key key={k} letter={k} clickKey={this.clicked}/>
 
               ))}
             </div>
