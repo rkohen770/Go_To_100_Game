@@ -72,7 +72,7 @@ class Word extends Component {
         this.setState({text: prevText});   
     }
        
-    };
+    
     handleLanguageChange = (event) => {
         this.setState({language: event.target.value});
       };  
