@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import KeyBoard from './KeyboardNew';
 import TextArea from './TextArea';
 import Colors from './Colors';
+import Editor from './Editor';
 import "../css/keyboard.css"
 import "../css/key.css"
 import "../css/colorButton.css"
@@ -11,9 +12,12 @@ class Word extends Component {
     state = { 
         text: "",
         capsLock: false,
-        shift: false,
         language: "en",
-     } 
+        color: "#000000",
+        underline: false,
+        italic: false,
+        bold: false
+    } 
     handleEnter = () => {
      let prevText=this.state.text+"\n";
      this.setState({text: prevText});
@@ -35,53 +39,73 @@ class Word extends Component {
         this.setState({capsLock: cap});
     };
 
-    handleShift = () => {
-        let shft=!this.state.shift;
-        this.setState({shift: shft});
-    };
+    
 
     handleKeyPress = (key) => {
+        let prevText=this.state.text;
         if(this.state.capsLock){
-            if(this.state.shift){                                 
-                let prevText=this.state.text+key;
-                this.setState({text: prevText});
-            }
-            else{
-                let prevText=this.state.text+key.toUpperCase();   
-                this.setState({text: prevText});
-            }
+            prevText+=key.toUpperCase();   
+                                 
         }
         else{
-            if(this.state.shift){
-                let prevText=this.state.text+key.toUpperCase();   
-                this.setState({text: prevText, shift: false});
-            }
-            else{
-                let prevText=this.state.text+key;   
-                this.setState({text: prevText, shift: false});
-            }
+            prevText+=key;
+            
+        }
+        if(this.state.underline){
 
         }
+        else{
+
+        }
+        if(this.state.italic){
+
+        }
+        else{
+
+        }
+        if(this.state.bold){
+
+        }
+        else{
+
+        }
+        this.setState({text: prevText});   
+    }
+       
     };
     handleLanguageChange = (event) => {
         this.setState({language: event.target.value});
       };  
     switchColor=(color)=>{
-        //how to change color?
+        this.setState({color: color})
+    }
+    setUnderline=()=>{
+        let und=!this.state.underline;
+        this.setState({underline: und});
+    }
+    setItalic=()=>{
+        let it=!this.state.italic;
+        this.setState({italic: it});
+    }
+    setBold=()=>{
+        let bold=!this.state.bold;
+        this.setState({bold: bold});
     }
     render() { 
         return (  
             <div>
+                
+                <Colors switchColor={this.switchColor}/>
+                <TextArea text={this.state.text}/>
+                <KeyBoard language={this.state.language} enter={this.handleEnter} space={this.handleSpace}
+                delete={this.handleDelete} caps={this.handleCapsLock}
+                shift={this.handleShift} press={this.handleKeyPress}/>
                 <label >Language:</label>
                 <select id="language" value={this.state.language} onChange={this.handleLanguageChange}>
                 <option value="en">English</option>
                 <option value="he">Hebrew</option>
                 </select>
-                <Colors switchColor={this.switchColor}/>
-                <TextArea text={this.state.text}/>
-                <KeyBoard langauge={this.state.language} enter={this.handleEnter} space={this.handleSpace}
-                delete={this.handleDelete} caps={this.handleCapsLock}
-                shift={this.handleShift} press={this.handleKeyPress}/>
+                <Editor underline={this.setUnderline} italic={this.setItalic} bold={this.setBold}/>
             </div> 
         );
     }

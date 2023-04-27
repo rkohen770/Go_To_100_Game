@@ -10,6 +10,7 @@ class Main extends Component {
     game=()=>{
         this.setState({game: true})
     }
+    
     type=()=>{
         this.setState({keyboard: true})
     }
