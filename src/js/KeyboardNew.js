@@ -15,7 +15,7 @@ class KeyBoard
     hebrewKeys: [    ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+'],
         [ '`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'delete'],
         [ "ק", "ר", "א", "ט", "ו", "ן", "ם", "פ", "[","]","\\", "'"],
-        ["caps lock", "ש", "ד", "ג", "כ", "ע", "י", "ח", "ל", "ך", "ף", "enter"],
+        ["ש", "ד", "ג", "כ", "ע", "י", "ח", "ל", "ך", "ף", "enter"],
         ["ז", "ס", "ב", "ה", "נ", "מ", "צ", "ת", "ץ",".", "/","?"],
         ["space"],
     ]
@@ -42,7 +42,7 @@ class KeyBoard
           {lang.map((row, index) => (
             <div className="row" key={index}>
               {row.map((k) => (
-                  <Key key={k} letter={k} clickKey={this.clicked}/>
+                  <Key key={k} letter={k} caps={this.props.isCaps} clickKey={this.clicked}/>
 
               ))}
             </div>

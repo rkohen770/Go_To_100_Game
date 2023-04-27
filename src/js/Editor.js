@@ -4,9 +4,9 @@ class Editor extends Component {
     render() { 
         return (
             <div>
-                <button onclick={this.props.underline}>U</button>
-                <button onclick={this.props.italic}>I</button>
-                <button onclick={this.props.bold}>B</button>
+                <button onClick={this.props.underline}>U</button>
+                <button onClick={this.props.italic}>I</button>
+                <button onClick={this.props.bold}>B</button>
             </div>
         );
     }

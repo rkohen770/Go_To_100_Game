@@ -3,7 +3,7 @@ class TextArea extends Component {
     
     render() { 
         return (
-            <p>{this.props.text}</p>
+            <pre dangerouslySetInnerHTML={{__html: this.props.text}} />
         );
     }
 }
