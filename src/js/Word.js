@@ -13,8 +13,7 @@ class Word extends Component {
         text: ``,
         capsLock: false,
         language: "en",
-        color: "#000000",
-        underline: false,
+        color: "black",
         italic: false,
         bold: false
     } 
@@ -51,22 +50,10 @@ class Word extends Component {
         if(this.state.italic){
             letter=letter.italics();
         }
-        if(this.state.underline){
-            if(this.state.bold){
-                prevText=`${prevText}<b><u>${letter}</u></b>`;
-            }
-            else{
-                prevText=`${prevText}<u>${letter}</u>`;
-            }                   
+        if(this.state.bold){
+            letter=letter.bold();
         }
-        else{
-            if(this.state.bold){
-                prevText=`${prevText}<b>${letter}</b>`;
-            }
-            else{
-                prevText+=letter; 
-            }            
-        }   
+        prevText+=letter; 
         this.setState({text: prevText});   
     }
        
@@ -74,8 +61,8 @@ class Word extends Component {
     handleLanguageChange = (event) => {
         this.setState({language: event.target.value});
       };  
-    switchColor=(color)=>{
-        this.setState({color: color})
+    switchColor=(col)=>{
+        this.setState({color: col})
     }
     handleUnderline=()=>{
         let und=!this.state.underline;
@@ -89,12 +76,15 @@ class Word extends Component {
         let bold=!this.state.bold;
         this.setState({bold: bold});
     }
+    handleClear=()=>{
+        this.setState({text: ""});
+    }
     render() { 
         return (  
             <div>
                 
                 <Colors switchColor={this.switchColor}/>
-                <TextArea text={this.state.text}/>
+                <TextArea text={this.state.text} color={this.state.color}/>
                 <KeyBoard language={this.state.language} enter={this.handleEnter} space={this.handleSpace}
                 delete={this.handleDelete} caps={this.handleCapsLock}
                 press={this.handleKeyPress} isCaps={this.state.capsLock}/>
@@ -103,7 +93,7 @@ class Word extends Component {
                 <option value="en">English</option>
                 <option value="he">Hebrew</option>
                 </select>
-                <Editor underline={this.handleUnderline} italic={this.handleItalic} bold={this.handleBold}/>
+                <Editor clear={this.handleClear} italic={this.handleItalic} bold={this.handleBold} lan={this.state.language}/>
             </div> 
         );
     }
