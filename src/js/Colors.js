@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import "../css/colorButton.css"
 class Colors extends Component {
     state = { 
         colors : {
@@ -15,14 +16,14 @@ class Colors extends Component {
     render() { 
         return (
             <div className="color-picker">
-                    <button style={{ backgroundColor: this.state.colors.black }} onClick={()=>this.props.switchColor(this.state.black)}/>
-                    <button style={{ backgroundColor: this.state.colors.red }} onClick={()=>this.props.switchColor(this.state.red)} />
-                    <button style={{ backgroundColor: this.state.colors.blue }} onClick={()=>this.props.switchColor(this.state.black)}/>
-                    <button style={{ backgroundColor: this.state.colors.green }} onClick={()=>this.props.switchColor(this.state.green)}/>
-                    <button style={{ backgroundColor: this.state.colors.yellow }} onClick={()=>this.props.switchColor(this.state.yellow)}/>
-                    <button style={{ backgroundColor: this.state.colors.pink }} onClick={()=>this.props.switchColor(this.state.pink)}/>
-                    <button style={{ backgroundColor: this.state.colors.purple }} onClick={()=>this.props.switchColor(this.state.purple)}/>
-                    <button style={{ backgroundColor: this.state.colors.orange }} onClick={()=>this.props.switchColor(this.state.orange)}/>
+                    <button className='color' style={{ backgroundColor: this.state.colors.black }} onClick={()=>this.props.switchColor(this.state.black)}/>
+                    <button className='color' style={{ backgroundColor: this.state.colors.red }} onClick={()=>this.props.switchColor(this.state.red)} />
+                    <button className='color' style={{ backgroundColor: this.state.colors.blue }} onClick={()=>this.props.switchColor(this.state.black)}/>
+                    <button className='color' style={{ backgroundColor: this.state.colors.green }} onClick={()=>this.props.switchColor(this.state.green)}/>
+                    <button className='color' style={{ backgroundColor: this.state.colors.yellow }} onClick={()=>this.props.switchColor(this.state.yellow)}/>
+                    <button className='color' style={{ backgroundColor: this.state.colors.pink }} onClick={()=>this.props.switchColor(this.state.pink)}/>
+                    <button className='color' style={{ backgroundColor: this.state.colors.purple }} onClick={()=>this.props.switchColor(this.state.purple)}/>
+                    <button className='color' style={{ backgroundColor: this.state.colors.orange }} onClick={()=>this.props.switchColor(this.state.orange)}/>
                 </div>
         );
     }

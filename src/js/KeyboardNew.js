@@ -42,7 +42,7 @@ class KeyBoard
           {lang.map((row, index) => (
             <div className="row" key={index}>
               {row.map((k) => (
-                  <Key key={k} letter={k} clickKey={this.clicked}/>
+                  <Key  key={k} letter={k} clickKey={this.clicked}/>
 
               ))}
             </div>
