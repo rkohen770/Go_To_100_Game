@@ -54,15 +54,3 @@ class KeyBoard
 export default KeyBoard;
 //to do: everything
 //figure out caps lock
-/*
- <div className="keyboard">
-            {this.state.englishKeys.map((row, index) => (
-              <div className="row" key={index}>
-                {row.map((k) => (
-                    <Key key={k} clickKey={this.clicked}/>
-
-                ))}
-              </div>
-            ))}
-          </div>
-*/

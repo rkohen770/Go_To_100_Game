@@ -15,7 +15,7 @@ class Key extends Component {
         let classList ="key ";
         {this.props.letter==="space"? classList+= "space ":classList+= "letter ";}
         return (
-            <div>{this.IsCaps()}</div>
+            <div className={classList}>{this.IsCaps()}</div>
             
         );
     }

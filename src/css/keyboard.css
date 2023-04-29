@@ -9,7 +9,8 @@ body {
 }
 
 .textContainer {
-  width: 90vw;
+  align-items: center;
+  width: 68vw;
   height: 15vh;
   background: whitesmoke;
   box-shadow: 0 0 20px 2px grey;
@@ -22,8 +23,8 @@ body {
 }
 
 .keyboard {
-  width: 50vw;
-  height: 70vh;
+  width: 70vw;
+  height: 50vh;
   background: darkgray;
   border-radius: 1rem;
   display: flex;
@@ -37,11 +38,6 @@ body {
   justify-content: space-evenly;
 }
 
-.secondLast {
-  width: 60%;
-  margin: 0 auto;
-}
-
 .space {
   width: 50%;
   height: 2rem;
@@ -49,8 +45,12 @@ body {
 }
 
 .key {
-  padding: 0.5rem;
+  margin: 0;
+  text-align: center;
   border-radius: 2px;
+  background: none;
+  border: none;
+  color: black;
 }
 
 .key:active {
@@ -61,16 +61,22 @@ body {
   background: whitesmoke;
 }
 
-
-.decuration{
-  display: flex;
-  flex-direction: column;
+.body {
+  display: grid;
+  grid-template-columns: 75% 25%;
+  align-items: center;
+  font-size: 1.5rem;
 }
 
-.body{
-  display: grid;
-  grid-template-columns: 25% 50% 25%;
+.header {
+  padding: 0 1rem 4rem 1rem;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.lang {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  height: 100vh;
-  font-size: 1.5rem;
+  justify-content: space-evenly;
 }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 class TextArea extends Component {
     /*black: "#000000",
             red: "#ff0000",
@@ -28,7 +29,7 @@ class TextArea extends Component {
     }
     render() { 
         return (
-           <div>
+           <div className='textContainer'>
             {this.setCol()}
            </div>
         );
