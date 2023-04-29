@@ -39,8 +39,18 @@ class Board extends Component {
     );
   }
   leave = (pid) => {
-    let newpeople = this.state.people.filter((p) => p.id != pid);
-    this.setState({ people: newpeople });
+    //let newpeople = this.state.people.filter((p) => p.id != pid);
+    let newpeople=[];
+    for(let i=0; i<this.state.people; i++){
+      if(this.state.people[i].id != pid){
+        newpeople.push(this.state.people[i]);
+      }
+    }
+    let t=this.state.turn;
+    if(t==this.state.people - 1){
+      t=0;
+    }
+    this.setState({ people: newpeople, turn: t});
   };
   newGame = (pid) => {
     let pp = this.state.people;
@@ -61,7 +71,14 @@ class Board extends Component {
         );
       }
     }
-    this.setState({ people: pp });
+    let t=this.state.turn;
+    if(t==pp.length - 1){
+      t=0;
+    }
+    else{
+      t++;
+    }
+    this.setState({ people: pp, turn: t});
   };
   add1 = (
     pid //a lot of repitition... maybe refactor
@@ -111,12 +128,14 @@ class Board extends Component {
   };
   turn() {
     let t = this.state.turn;
-    if (t == this.state.people.length - 1) {
-      t = 0;
-    } else {
-      t++;
-    }
-    this.setState({ turn: t });
+    if(!(this.state.people[t].number==100)){
+      if (t == this.state.people.length - 1) {
+        t = 0;
+      } else {
+        t++;
+      }  
+      this.setState({ turn: t });
+    }  
   }
 }
 //what component will the board be? contains everything else (instead of the div)

@@ -4,11 +4,19 @@ import "../css/keyboard.css";
 
 class Key extends Component {
     state = {  } 
+    IsCaps=()=>{
+        if(this.props.caps){
+          return  <button className='key' onClick={()=>this.props.clickKey(this.props.letter)}>{this.props.letter.toUpperCase()}</button>
+            
+        }
+        return  <button className='key' onClick={()=>this.props.clickKey(this.props.letter)}>{this.props.letter}</button>
+    }
     render() { 
         let classList ="key ";
         {this.props.letter==="space"? classList+= "space ":classList+= "letter ";}
         return (
-            <button className={classList} onClick={()=>this.props.clickKey(this.props.letter)}>{this.props.letter}</button>
+            <div>{this.IsCaps()}</div>
+            
         );
     }
 }

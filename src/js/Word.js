@@ -1,31 +1,31 @@
-import React, { Component } from "react";
-import KeyBoard from "./KeyboardNew";
-import TextArea from "./TextArea";
-import Colors from "./Colors";
-import Editor from "./Editor";
-import "../css/keyboard.css";
-import "../css/key.css";
-import "../css/colorButton.css";
+import React, { Component } from 'react';
+import KeyBoard from './KeyboardNew';
+import TextArea from './TextArea';
+import Colors from './Colors';
+import Editor from './Editor';
+import "../css/background.css"
+import "../css/keyboard.css"
+import "../css/key.css"
+import "../css/colorButton.css"
 
 class Word extends Component {
-  state = {
-    text: "",
-    capsLock: false,
-    language: "en",
-    color: "#000000",
-    underline: false,
-    italic: false,
-    bold: false,
-  };
-  handleEnter = () => {
-    let prevText = this.state.text + "\n";
-    this.setState({ text: prevText });
-  };
-
-  handleSpace = () => {
-    let prevText = this.state.text + " ";
-    this.setState({ text: prevText });
-  };
+    state = { 
+        text: ``,
+        capsLock: false,
+        language: "en",
+        color: "black",
+        italic: false,
+        bold: false
+    } 
+    handleEnter = () => {
+     let prevText=this.state.text+"\n";
+     this.setState({text: prevText});
+    };
+    
+    handleSpace = () => {
+        let prevText=this.state.text+" ";
+        this.setState({text: prevText});
+    };
 
   handleDelete = () => {
     let prevText = this.state.text;
@@ -38,78 +38,63 @@ class Word extends Component {
     this.setState({ capsLock: cap });
   };
 
-  handleKeyPress = (key) => {
-    let prevText = this.state.text;
-    if (this.state.capsLock) {
-      prevText += key.toUpperCase();
-    } else {
-      prevText += key;
+    handleKeyPress = (key) => {
+        let prevText=this.state.text;
+        let letter=key;
+        let added=false;
+        if(this.state.capsLock){
+            letter=letter.toUpperCase();  
+        }
+        if(this.state.italic){
+            letter=letter.italics();
+        }
+        if(this.state.bold){
+            letter=letter.bold();
+        }
+        prevText+=letter; 
+        this.setState({text: prevText});   
     }
-    if (this.state.underline) {
-    } else {
+       
+    
+    handleLanguageChange = (event) => {
+        this.setState({language: event.target.value});
+      };  
+    switchColor=(col)=>{
+        this.setState({color: col})
     }
-    if (this.state.italic) {
-    } else {
+    handleUnderline=()=>{
+        let und=!this.state.underline;
+        this.setState({underline: und});
     }
-    if (this.state.bold) {
-    } else {
+    handleItalic=()=>{
+        let it=!this.state.italic;
+        this.setState({italic: it});
     }
-    this.setState({ text: prevText });
-  };
-
-  handleLanguageChange = (event) => {
-    this.setState({ language: event.target.value });
-  };
-  switchColor = (color) => {
-    this.setState({ color: color });
-  };
-  setUnderline = () => {
-    let und = !this.state.underline;
-    this.setState({ underline: und });
-  };
-  setItalic = () => {
-    let it = !this.state.italic;
-    this.setState({ italic: it });
-  };
-  setBold = () => {
-    let bold = !this.state.bold;
-    this.setState({ bold: bold });
-  };
-  render() {
-    return (
-      <div>
-        <label>Language:</label>
-        <select
-          id="language"
-          value={this.state.language}
-          onChange={this.handleLanguageChange}
-        >
-          <option value="en">English</option>
-          <option value="he">Hebrew</option>
-        </select>
-        <div className="textContainer">
-          <TextArea text={this.state.text} />
-        </div>
-        <div className="body">
-          <Colors switchColor={this.switchColor} />
-          <KeyBoard
-            language={this.state.language}
-            enter={this.handleEnter}
-            space={this.handleSpace}
-            delete={this.handleDelete}
-            caps={this.handleCapsLock}
-            shift={this.handleShift}
-            press={this.handleKeyPress}
-          />
-          <Editor
-            underline={this.setUnderline}
-            italic={this.setItalic}
-            bold={this.setBold}
-          />
-        </div>
-      </div>
-    );
-  }
+    handleBold=()=>{
+        let bold=!this.state.bold;
+        this.setState({bold: bold});
+    }
+    handleClear=()=>{
+        this.setState({text: ""});
+    }
+    render() { 
+        return (  
+            <div>
+                
+                <Colors switchColor={this.switchColor}/>
+                <TextArea text={this.state.text} color={this.state.color}/>
+                <KeyBoard language={this.state.language} enter={this.handleEnter} space={this.handleSpace}
+                delete={this.handleDelete} caps={this.handleCapsLock}
+                press={this.handleKeyPress} isCaps={this.state.capsLock}/>
+                <label >Language:</label>
+                <select id="language" value={this.state.language} onChange={this.handleLanguageChange}>
+                <option value="en">English</option>
+                <option value="he">Hebrew</option>
+                </select>
+                <Editor clear={this.handleClear} italic={this.handleItalic} bold={this.handleBold} lan={this.state.language}/>
+            </div> 
+        );
+    }
 }
 
 export default Word;

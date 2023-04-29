@@ -1,12 +1,21 @@
 import React, { Component } from 'react';
 class Editor extends Component {
-    state = {  } 
+    isEn=()=>{
+        if(this.props.lan=="en"){
+            return <div>
+            <button onClick={this.props.italic}>I</button>
+            <button onClick={this.props.bold}>B</button>
+            <button onClick={this.props.clear}>clear</button>
+        </div>
+        }
+        else{
+            return <button onClick={this.props.clear}>clear</button>
+        }
+    }
     render() { 
         return (
-            <div className='decuration'>
-                <button onclick={this.props.underline}>U</button>
-                <button onclick={this.props.italic}>I</button>
-                <button onclick={this.props.bold}>B</button>
+            <div>
+                {this.isEn()}
             </div>
         );
     }
