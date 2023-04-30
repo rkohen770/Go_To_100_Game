@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import KeyBoard from "./Keyboard";
+import KeyBoard from "./KeyBoard";
 import TextArea from "./TextArea";
 import Colors from "./Colors";
 import Editor from "./Editor";

@@ -20,6 +20,7 @@ class Game extends Component {
       let num = this.state.numPlayers+1;
       this.setState({ toAdd: false, players: pp, numPlayers: num });
   }
+  
   startGame=()=>{
     this.setState({ready: true});
   }
@@ -39,9 +40,8 @@ class Game extends Component {
             <button onClick={this.addPlayer}>add a player</button>
             <button onClick={this.startGame}>start the game</button>
           </div>;
-          
         }
-      
+
     }  
   }
  

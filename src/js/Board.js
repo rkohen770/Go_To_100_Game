@@ -41,16 +41,20 @@ class Board extends Component {
   leave = (pid) => {
     //let newpeople = this.state.people.filter((p) => p.id != pid);
     let newpeople=[];
-    for(let i=0; i<this.state.people; i++){
+    let count=0;
+    for(let i=0; i<this.state.people.length; i++){
       if(this.state.people[i].id != pid){
-        newpeople.push(this.state.people[i]);
+        let newPerson=new Person(this.state.people[i].name, count, this.state.people[i].number, this.state.people[i].moves, this.state.people[i].scores)
+        newpeople.push(newPerson);
+        count++;
       }
     }
     let t=this.state.turn;
-    if(t==this.state.people - 1){
+    if(t==this.state.people.length - 1){
       t=0;
     }
-    this.setState({ people: newpeople, turn: t});
+    this.setState({ people: newpeople});
+    this.setState({turn: t})
   };
   newGame = (pid) => {
     let pp = this.state.people;
