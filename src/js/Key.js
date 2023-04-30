@@ -1,40 +1,24 @@
-/*import React from "react";
+import React, { Component } from 'react';
 
-import "../css/key.css";
+import "../css/keyboard.css";
 
-function Key({ Key, onKeyPress, isCaps, isShift }) {
-  const classList = ["key"];
-  const handleClick = () => {
-    if (Key === "delete") {
-      onKeyPress("delete ");
-      classList += "delete";
-    } else if (Key === "enter") {
-      onKeyPress("enter");
-      classList += "enter";
-    } else if (Key === "caps lock") {
-      isCaps ? (classList += "active") : (classList -= "active");
-      onKeyPress("caps lock");
-      classList += "caps lock";
-    } else if (Key === "shift") {
-      isShift ? (classList += "active") : (classList -= "active");
-      onKeyPress("shift");
-      classList += "shift";
-    } else if (Key === "space") {
-      onKeyPress("\n");
-      classList += "space";
-    } else {
-      if (isCaps) {
-        Key = Key.toUpperCase();
-      }
-      onKeyPress(Key);
+class Key extends Component {
+    state = {  } 
+    IsCaps=()=>{
+        if(this.props.caps){
+          return  <button className='key' onClick={()=>this.props.clickKey(this.props.letter)}>{this.props.letter.toUpperCase()}</button>
+            
+        }
+        return  <button className='key' onClick={()=>this.props.clickKey(this.props.letter)}>{this.props.letter}</button>
     }
-  };
-
-  return (
-    <div className={classList} onClick={handleClick}>
-      {onKeyPress(Key)}
-    </div>
-  );
+    render() { 
+        let classList ="key ";
+        {this.props.letter==="space"? classList+= "space ":classList+= "letter ";}
+        return (
+            <div className={classList}>{this.IsCaps()}</div>
+            
+        );
+    }
 }
-
-export default Key;*/
+ 
+export default Key;
